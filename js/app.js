@@ -1,19 +1,42 @@
 class CalorieTracker {
 	constructor() {
-		this._calorieLimit = 2000;
+		this._calorieLimit = 1500;
 		this._totalCalories = 0;
 		this._meals = [];
 		this._workouts = [];
+
+		this._displayTotalCalories();
+		this._displayCaloriesLimit();
 	}
+
+	// Public Methods/API //
 
 	addMeal(meal) {
 		this._meals.push(meal);
 		this._totalCalories += meal.calories;
+		this._render();
 	}
 
 	addWorkout(workout) {
 		this._workouts.push(workout);
 		this._totalCalories -= workout.calories;
+		this._render();
+	}
+
+	// Private Methods //
+
+	_displayTotalCalories() {
+		const _totalCaloriesEl = document.querySelector("#calories-total");
+		_totalCaloriesEl.innerHTML = this._totalCalories;
+	}
+
+	_displayCaloriesLimit() {
+		const _calorieLimitEl = document.querySelector("#calories-limit");
+		_calorieLimitEl.innerHTML = this._calorieLimit;
+	}
+
+	_render() {
+		this._displayTotalCalories();
 	}
 }
 
