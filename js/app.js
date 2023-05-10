@@ -101,6 +101,7 @@ class CalorieTracker {
 	_displayNewItem(obj, type) {
 		const cardDiv = document.createElement("div");
 		cardDiv.classList.add("card", "my-2");
+		cardDiv.setAttribute("data-id", obj.id);
 
 		const cardBodyDiv = document.createElement("div");
 		cardBodyDiv.classList.add("card-body");
@@ -141,11 +142,13 @@ class CalorieTracker {
 		cardDiv.appendChild(cardBodyDiv);
 
 		if (type === "meal") {
-			document.querySelector("#meal-items").appendChild(cardDiv);
+			const mealItems = document.querySelector("#meal-items");
+			mealItems.appendChild(cardDiv);
 
 			valueDiv.classList.add("bg-primary");
 		} else {
-			document.querySelector("#workout-items").appendChild(cardDiv);
+			const workoutItems = document.querySelector("#workout-items");
+			workoutItems.appendChild(cardDiv);
 
 			valueDiv.classList.add("bg-secondary");
 		}
