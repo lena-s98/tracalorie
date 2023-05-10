@@ -18,12 +18,14 @@ class CalorieTracker {
 	addMeal(meal) {
 		this._meals.push(meal);
 		this._totalCalories += meal.calories;
+		this._displayNewItem(meal, "meal");
 		this._render();
 	}
 
 	addWorkout(workout) {
 		this._workouts.push(workout);
 		this._totalCalories -= workout.calories;
+		this._displayNewItem(workout, "workout");
 		this._render();
 	}
 
@@ -94,6 +96,59 @@ class CalorieTracker {
 		const width = Math.min(percentage, 100);
 
 		progressEl.style.width = `${width}%`;
+	}
+
+	_displayNewItem(obj, type) {
+		const cardDiv = document.createElement("div");
+		cardDiv.classList.add("card", "my-2");
+
+		const cardBodyDiv = document.createElement("div");
+		cardBodyDiv.classList.add("card-body");
+
+		const alignmentDiv = document.createElement("div");
+		alignmentDiv.classList.add(
+			"d-flex",
+			"align-items-center",
+			"justify-content-between"
+		);
+
+		const h4 = document.createElement("h4");
+		h4.classList.add("mx-1");
+		h4.textContent = `${obj.name}`;
+
+		const valueDiv = document.createElement("div");
+		valueDiv.classList.add(
+			"fs-1",
+			"text-white",
+			"text-center",
+			"rounded-2",
+			"px-2",
+			"px-sm-5"
+		);
+		valueDiv.textContent = `${obj.calories}`;
+
+		const button = document.createElement("button");
+		button.classList.add("delete", "btn", "btn-danger", "btn-sm", "mx-2");
+
+		const icon = document.createElement("i");
+		icon.classList.add("fa-solid", "fa-xmark");
+
+		button.appendChild(icon);
+		alignmentDiv.appendChild(h4);
+		alignmentDiv.appendChild(valueDiv);
+		alignmentDiv.appendChild(button);
+		cardBodyDiv.appendChild(alignmentDiv);
+		cardDiv.appendChild(cardBodyDiv);
+
+		if (type === "meal") {
+			document.querySelector("#meal-items").appendChild(cardDiv);
+
+			valueDiv.classList.add("bg-primary");
+		} else {
+			document.querySelector("#workout-items").appendChild(cardDiv);
+
+			valueDiv.classList.add("bg-secondary");
+		}
 	}
 
 	_render() {
