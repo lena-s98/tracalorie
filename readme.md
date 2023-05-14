@@ -1,5 +1,9 @@
 # Tracalorie App
 
+## Deployment
+
+[Tracalorie App](https://lena-s98.github.io/tracalorie/)
+
 ## Description
 
 Tracalorie is a calorie tracker application written in Vanilla JavaScript using OOP Principles.
