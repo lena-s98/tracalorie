@@ -17,3 +17,7 @@ When the day is done and you want to reset everything you do so by simply using 
 - Add meals/workouts
 - Remove meals/workouts
 - Reset the day/stats
+
+![A screenshot of the tracalorie page][def]
+
+[def]: ./tracalorie.jpg
