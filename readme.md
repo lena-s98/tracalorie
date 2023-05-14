@@ -2,7 +2,7 @@
 
 ## Deployment
 
-[Tracalorie App](https://lena-s98.github.io/tracalorie/)
+<a href="https://lena-s98.github.io/tracalorie/" target="_blank">Tracalorie App</a>
 
 ## Description
 
